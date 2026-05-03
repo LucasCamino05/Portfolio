@@ -1,0 +1,26 @@
+<section id="hero" class="hero">
+  <div class="hero__decoration" aria-hidden="true">
+    <div class="hero__grid"></div>
+    <div class="hero__aurora hero__aurora--1"></div>
+    <div class="hero__aurora hero__aurora--2"></div>
+  </div>
+
+  <div class="hero__inner">
+    <div class="hero__content">
+      <span class="hero__eyebrow">{{ site.location }}</span>
+
+      <h1 class="hero__name">{{ 'hero.name' | translate }}</h1>
+
+      <p class="hero__title">{{ 'hero.title' | translate }}</p>
+
+      <div class="hero__subtitle">
+        <p>{{ 'hero.subtitleLine1' | translate }}</p>
+        <p>{{ 'hero.subtitleLine2' | translate }}</p>
+      </div>
+    </div>
+
+    <div class="hero__photo" aria-label="{{ 'hero.photoPlaceholder' | translate }}">
+      <span class="hero__photo-initials">{{ site.ownerInitials }}</span>
+    </div>
+  </div>
+</section>

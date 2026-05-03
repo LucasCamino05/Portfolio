@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <title>Lucas Camino — Desarrollador Full-Stack</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portfolio de Lucas Camino, desarrollador en formación. Java, Spring Boot, Angular y Kotlin. Mar del Plata, Argentina.">
+  <meta name="theme-color" content="#0B0F17">
+  <meta name="color-scheme" content="dark light">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Lucas Camino — Desarrollador Full-Stack">
+  <meta property="og:description" content="Estudiante avanzado de Programación en UTN. Java · Spring Boot · Angular · Kotlin.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_AR">
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Preconnect a Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Tipografías: Space Grotesk + Inter + JetBrains Mono -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Tema temprano antes de hidratar Angular para evitar flash -->
+  <script>
+    (function() {
+      try {
+        var saved = localStorage.getItem('theme');
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var theme = saved || (prefersDark ? 'dark' : 'dark'); // default dark
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+</head>
+<body>
+  <app-root></app-root>
+</body>
+</html>

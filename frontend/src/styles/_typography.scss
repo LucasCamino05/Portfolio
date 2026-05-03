@@ -1,0 +1,61 @@
+@use 'tokens' as t;
+
+// =============================================================
+// Tipografía global. Las fuentes se cargan desde Google Fonts
+// vía <link> en index.html para mejor LCP.
+// =============================================================
+
+html {
+  font-size: 16px;
+  font-family: t.$font-body;
+  line-height: t.$leading-normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: t.$font-body;
+  font-weight: t.$font-normal;
+  color: var(--color-text);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: t.$font-display;
+  font-weight: t.$font-bold;
+  line-height: t.$leading-tight;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin: 0;
+}
+
+h1 { font-size: clamp(2rem, 5vw + 1rem, t.$text-7xl); }
+h2 { font-size: clamp(1.75rem, 3vw + 1rem, t.$text-5xl); }
+h3 { font-size: clamp(1.25rem, 2vw + 0.5rem, t.$text-3xl); }
+h4 { font-size: t.$text-xl; }
+h5 { font-size: t.$text-lg; }
+h6 { font-size: t.$text-base; }
+
+p {
+  margin: 0 0 t.$space-4;
+  color: var(--color-text);
+  line-height: t.$leading-relaxed;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color t.$transition-fast;
+
+  &:hover { color: var(--color-accent-hover); }
+}
+
+code, pre, .mono {
+  font-family: t.$font-mono;
+  font-size: 0.95em;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-text-inverse);
+}

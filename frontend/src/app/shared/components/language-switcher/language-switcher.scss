@@ -1,0 +1,34 @@
+@use '../../../../styles/tokens' as t;
+@use '../../../../styles/mixins' as m;
+
+.lang-switcher {
+  display: inline-flex;
+  align-items: center;
+  height: 2.25rem;
+  padding-inline: t.$space-3;
+  border-radius: t.$radius-full;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  font-family: t.$font-mono;
+  font-size: t.$text-xs;
+  font-weight: t.$font-semibold;
+  letter-spacing: 0.05em;
+  transition: t.$transition-fast;
+
+  &__current {
+    color: var(--color-accent);
+  }
+
+  &__alt {
+    color: var(--color-text-subtle);
+  }
+
+  &:hover {
+    border-color: var(--color-accent);
+  }
+
+  &:focus-visible {
+    @include m.focus-ring;
+  }
+}

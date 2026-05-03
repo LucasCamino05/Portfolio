@@ -1,0 +1,98 @@
+@if (project(); as p) {
+  <main id="main" class="detail">
+    <div class="detail__inner">
+      <a routerLink="/" fragment="projects" class="detail__back">
+        <lucide-icon [img]="ArrowLeftIcon" [size]="16" />
+        {{ 'projects.back' | translate }}
+      </a>
+
+      <header class="detail__header" appReveal>
+        <span
+          class="detail__status"
+          [class.is-progress]="p.status === 'in-progress'"
+          [class.is-done]="p.status === 'completed'"
+        >
+          {{ statusKey() | translate }}
+        </span>
+
+        <h1 class="detail__title">{{ p.titleKey | translate }}</h1>
+        <p class="detail__tagline">{{ p.taglineLongKey | translate }}</p>
+
+        @if (p.coAuthorKey) {
+          <p class="detail__coauthor">{{ p.coAuthorKey | translate }}</p>
+        }
+      </header>
+
+      <section class="detail__section" appReveal>
+        <h2>{{ 'projects.stack' | translate }}</h2>
+        <ul class="detail__chips">
+          @for (tech of p.stack; track tech) {
+            <li>{{ tech }}</li>
+          }
+        </ul>
+      </section>
+
+      @if (p.motivationKey) {
+        <section class="detail__section detail__section--prose" appReveal>
+          <p>{{ p.motivationKey | translate }}</p>
+        </section>
+      }
+
+      <section class="detail__section" appReveal>
+        <h2>{{ 'projects.highlights' | translate }}</h2>
+        <ul class="detail__highlights">
+          @for (h of p.highlights; track h.key) {
+            <li>{{ h.key | translate }}</li>
+          }
+        </ul>
+      </section>
+
+      <section class="detail__section detail__section--prose" appReveal>
+        <h2>{{ 'projects.role' | translate }}</h2>
+        <p>{{ p.roleKey | translate }}</p>
+      </section>
+
+      @if (p.currentStateKey) {
+        <section class="detail__section detail__section--prose" appReveal>
+          <h2>{{ 'projects.currentState' | translate }}</h2>
+          <p>{{ p.currentStateKey | translate }}</p>
+        </section>
+      }
+
+      <section class="detail__section" appReveal>
+        <h2>{{ 'projects.links' | translate }}</h2>
+        <ul class="detail__links">
+          @for (link of p.links; track link.url) {
+            <li>
+              @if (link.disabled) {
+                <span class="detail__link is-disabled">
+                  <lucide-icon [img]="LockIcon" [size]="14" />
+                  {{ link.labelKey | translate }}
+                </span>
+              } @else {
+                <a
+                  class="detail__link"
+                  [href]="link.url"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <lucide-icon [img]="GithubIcon" [size]="14" />
+                  {{ link.labelKey | translate }}
+                  <lucide-icon [img]="ExternalLinkIcon" [size]="12" />
+                </a>
+              }
+            </li>
+          }
+        </ul>
+      </section>
+    </div>
+  </main>
+} @else {
+  <main id="main" class="detail detail--missing">
+    <div class="detail__inner">
+      <h1>404</h1>
+      <p>Proyecto no encontrado.</p>
+      <a routerLink="/" fragment="projects">{{ 'projects.back' | translate }}</a>
+    </div>
+  </main>
+}

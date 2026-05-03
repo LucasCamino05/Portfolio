@@ -1,0 +1,68 @@
+<section id="experience" class="experience" appReveal>
+  <div class="experience__inner">
+    <app-section-title
+      titleKey="experience.title"
+      subtitleKey="experience.subtitle"
+      eyebrow="05"
+    />
+
+    <ol class="experience__timeline">
+      @for (entry of entries; track entry.key) {
+        <li class="experience__entry">
+          <div class="experience__icon">
+            <lucide-icon [img]="resolveIcon(entry.icon)" [size]="18" />
+          </div>
+          <div class="experience__content">
+            <div class="experience__head">
+              <h3 class="experience__role">
+                {{ 'experienceData.' + entry.key + '.role' | translate }}
+              </h3>
+              <span class="experience__period">
+                {{ entry.period }}
+                @if (entry.present) {
+                  <span class="experience__present">{{ 'experience.present' | translate }}</span>
+                }
+              </span>
+            </div>
+
+            <p class="experience__org">
+              {{ 'experienceData.' + entry.key + '.org' | translate }}
+            </p>
+
+            @if (entry.key === 'antares') {
+              <p class="experience__progression">
+                {{ 'experienceData.antares.progression' | translate }}
+              </p>
+            }
+
+            <p class="experience__desc">
+              {{ 'experienceData.' + entry.key + '.description' | translate }}
+            </p>
+
+            @if (entry.key === 'teaching') {
+              <ul class="experience__subjects">
+                @for (subj of teachingSubjects; track subj) {
+                  <li>{{ 'experienceData.teaching.subjects.' + subj | translate }}</li>
+                }
+              </ul>
+            }
+          </div>
+        </li>
+      }
+    </ol>
+
+    <div class="experience__complementary">
+      <h3 class="experience__complementary-title">
+        {{ 'experience.complementary' | translate }}
+      </h3>
+      <ul class="experience__complementary-list">
+        @for (group of complementary; track group.provider) {
+          <li>
+            <strong>{{ group.provider }}</strong>
+            <span>— {{ group.courses.join(', ') }}</span>
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,193 @@
+@use '../../../styles/tokens' as t;
+@use '../../../styles/mixins' as m;
+
+.detail {
+  padding-block: t.$space-16;
+  min-height: calc(100vh - 4rem);
+
+  &__inner {
+    @include m.container;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: t.$space-8;
+  }
+
+  &__back {
+    display: inline-flex;
+    align-items: center;
+    gap: t.$space-2;
+    color: var(--color-text-muted);
+    font-size: t.$text-sm;
+    font-family: t.$font-mono;
+    align-self: flex-start;
+
+    &:hover {
+      color: var(--color-accent);
+      transform: translateX(-3px);
+    }
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: t.$space-4;
+  }
+
+  &__status {
+    display: inline-flex;
+    align-self: flex-start;
+    padding: t.$space-1 t.$space-3;
+    border-radius: t.$radius-full;
+    font-family: t.$font-mono;
+    font-size: t.$text-xs;
+    font-weight: t.$font-semibold;
+
+    &.is-progress {
+      background: var(--color-accent-bg);
+      color: var(--color-accent);
+      border: 1px solid var(--color-accent-border);
+    }
+
+    &.is-done {
+      background: rgba(52, 211, 153, 0.1);
+      color: var(--color-success);
+      border: 1px solid rgba(52, 211, 153, 0.3);
+    }
+  }
+
+  &__title {
+    font-size: clamp(2rem, 5vw + 1rem, t.$text-6xl);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    background: linear-gradient(135deg, var(--color-text), var(--color-accent-soft));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &__tagline {
+    color: var(--color-text-muted);
+    font-size: t.$text-lg;
+    line-height: t.$leading-relaxed;
+    max-width: 65ch;
+    margin: 0;
+  }
+
+  &__coauthor {
+    padding: t.$space-3 t.$space-4;
+    background: var(--color-accent-bg);
+    border-left: 2px solid var(--color-accent);
+    border-radius: 0 t.$radius-md t.$radius-md 0;
+    color: var(--color-text);
+    font-size: t.$text-sm;
+    margin: 0;
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: t.$space-4;
+
+    h2 {
+      font-family: t.$font-mono;
+      font-size: t.$text-xs;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--color-accent);
+      margin: 0;
+    }
+
+    &--prose p {
+      font-size: t.$text-base;
+      line-height: t.$leading-relaxed;
+      color: var(--color-text);
+      max-width: 70ch;
+      margin: 0;
+    }
+  }
+
+  &__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: t.$space-2;
+
+    li {
+      padding: t.$space-2 t.$space-3;
+      border-radius: t.$radius-full;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      color: var(--color-text);
+      font-family: t.$font-mono;
+      font-size: t.$text-xs;
+    }
+  }
+
+  &__highlights {
+    display: flex;
+    flex-direction: column;
+    gap: t.$space-3;
+
+    li {
+      position: relative;
+      padding-left: t.$space-6;
+      color: var(--color-text);
+      line-height: t.$leading-relaxed;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0.65em;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--color-accent);
+        box-shadow: 0 0 8px var(--color-accent);
+      }
+    }
+  }
+
+  &__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: t.$space-3;
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: t.$space-2;
+    padding: t.$space-2 t.$space-4;
+    border-radius: t.$radius-md;
+    background: var(--color-accent-bg);
+    border: 1px solid var(--color-accent-border);
+    color: var(--color-accent);
+    font-size: t.$text-sm;
+    font-weight: t.$font-medium;
+
+    &:hover {
+      background: var(--color-accent);
+      color: #fff;
+    }
+
+    &.is-disabled {
+      background: var(--color-surface);
+      border-color: var(--color-border);
+      color: var(--color-text-muted);
+      cursor: not-allowed;
+
+      &:hover {
+        background: var(--color-surface);
+        color: var(--color-text-muted);
+      }
+    }
+  }
+
+  &--missing {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+}

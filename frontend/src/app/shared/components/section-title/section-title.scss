@@ -1,0 +1,27 @@
+@use '../../../../styles/tokens' as t;
+
+.section-title {
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-3;
+  margin-bottom: t.$space-12;
+  max-width: 60ch;
+
+  &__eyebrow {
+    font-family: t.$font-mono;
+    font-size: t.$text-xs;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-accent);
+  }
+
+  &__heading {
+    font-size: clamp(1.75rem, 3vw + 1rem, t.$text-5xl);
+  }
+
+  &__subtitle {
+    color: var(--color-text-muted);
+    font-size: t.$text-lg;
+    margin: 0;
+  }
+}

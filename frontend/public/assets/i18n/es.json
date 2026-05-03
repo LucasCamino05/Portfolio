@@ -1,0 +1,202 @@
+{
+  "nav": {
+    "about": "Sobre mí",
+    "skills": "Habilidades",
+    "stack": "Stack",
+    "projects": "Proyectos",
+    "experience": "Experiencia",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "name": "Lucas Camino",
+    "title": "Desarrollador en formación · Estudiante avanzado de Programación en UTN",
+    "subtitleLine1": "Java · Spring Boot · Angular · Kotlin. Ayudante de cátedra en UTN Mar del Plata.",
+    "subtitleLine2": "Apasionado por el desarrollo web y móvil, listo para dar mi primer paso profesional y sumar a un equipo donde seguir creciendo.",
+    "photoPlaceholder": "Foto"
+  },
+  "about": {
+    "title": "Sobre mí",
+    "p1": "Empecé a programar en 2020, casi sin querer. Estaba cursando Ingeniería Química y, entre la pandemia y la curiosidad, me puse a hacer páginas web y a meterme en cursos de desarrollo. En poco tiempo entendí que el código era lo único que me enganchaba de verdad: dejé Química y arranqué la Tecnicatura Universitaria en Programación en la UTN Mar del Plata. Hoy, ya cerca de terminarla y siendo ayudante de cátedra activo en tres materias —sumando cuatro a lo largo de la carrera—, no me imagino haciendo otra cosa.",
+    "p2": "En paralelo a la carrera, soy Manager en el bar Antares. El trabajo me mostró algo que no sabía de mí: que podía liderar. Armo horarios, capacito gente nueva, manejo conflictos del día a día y soy el puente entre los dueños y el equipo. Lo que más orgullo me da es que el primer grupo que formé sigue trabajando junto, y los que se fueron siguen siendo mis amigos. Eso me enseñó algo que me llevo cuando programo: la forma en que tratás a la gente importa tanto como lo que producís.",
+    "p3": "En lo técnico me siento más cómodo en backend y bases de datos —es lo que más me apasiona— aunque hasta ahora la mayoría de mis proyectos terminados son de frontend. Quiero seguir creciendo en ambas puntas y construir aplicaciones que la gente realmente use. Cuando no estoy frente a una pantalla, soy de familia, cocino, ando en bici, vivo con un mate al lado y me robo cada rato libre para pasarlo con mi perro Koda."
+  },
+  "softSkills": {
+    "title": "Habilidades blandas",
+    "subtitle": "Lo que aprendí fuera del código y aplico cada vez que me siento a programar.",
+    "items": {
+      "leadership": {
+        "title": "Liderazgo",
+        "evidence": "Manager de un equipo de 8+ personas en Antares."
+      },
+      "pressure": {
+        "title": "Trabajo bajo presión",
+        "evidence": "5 años resolviendo en tiempo real en un bar de alta demanda."
+      },
+      "teaching": {
+        "title": "Comunicación y enseñanza",
+        "evidence": "Ayudante de cátedra en 3 materias: si lo enseño, lo entendí."
+      },
+      "adaptability": {
+        "title": "Adaptabilidad",
+        "evidence": "De Química a Programación, de cocinero a Manager."
+      },
+      "problemSolving": {
+        "title": "Resolución de problemas",
+        "evidence": "Diagnóstico tranquilo cuando la noche se complica — o el bug."
+      },
+      "commitment": {
+        "title": "Compromiso",
+        "evidence": "Si me sumo a un proyecto, lo termino."
+      }
+    }
+  },
+  "stack": {
+    "title": "Stack tecnológico",
+    "subtitle": "Las herramientas con las que construyo.",
+    "categories": {
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "mobile": "Mobile",
+      "databases": "Bases de datos",
+      "tools": "Herramientas",
+      "languages": "Otros lenguajes",
+      "architecture": "Arquitectura"
+    }
+  },
+  "projects": {
+    "title": "Proyectos",
+    "subtitle": "Tres proyectos que muestran cómo trabajo: uno académico grupal, una tesis full-stack y uno personal.",
+    "viewMore": "Ver más",
+    "viewCode": "Ver código",
+    "viewDemo": "Ver demo",
+    "privateRepo": "Repo privado · Disponible bajo pedido",
+    "status": {
+      "inProgress": "En desarrollo",
+      "completed": "Finalizado"
+    },
+    "back": "Volver a proyectos",
+    "role": "Mi rol",
+    "highlights": "Características destacadas",
+    "stack": "Stack",
+    "links": "Enlaces",
+    "currentState": "Estado actual"
+  },
+  "projectsData": {
+    "loki": {
+      "title": "Loki",
+      "tagline": "Marketplace de compra y venta con ofertas y contraofertas en tiempo real. Proyecto de tesis universitario.",
+      "taglineLong": "Marketplace de compra y venta con ofertas y contraofertas en tiempo real. Tesis de la Tecnicatura Universitaria en Programación (TUP), UTN Mar del Plata.",
+      "motivation": "Loki es la tesis final de la TUP. Apunta a un marketplace donde el precio no se fija sino que se negocia: vendedor y comprador acuerdan en tiempo real con un sistema de ofertas y contraofertas.",
+      "currentState": "MVP funcional. El frontend implementa el flujo completo (autenticación, listado, carrito, checkout, ofertas) consumiendo un backend mockeado con JSON Server. El backend real en Spring Boot está en desarrollo, pendiente de integración.",
+      "coAuthor": "Proyecto de tesis desarrollado en co-autoría con Diego Maidana.",
+      "role": "Frontend (Angular + Signals): módulo de usuarios (registro, autenticación, perfil); CartService, componente de carrito y modelo; CheckoutService, modelo y flujo de checkout; sistema de buyout mock; configuración de routing. Backend (Spring Boot + Java 25): DTOs de Sellers y Clients; configuración de ModelMapper para mapeo entidad ↔ DTO; endpoints REST del módulo de usuarios.",
+      "highlights": {
+        "realtime": "Sistema de ofertas y contraofertas en tiempo real entre comprador y vendedor.",
+        "reactiveForms": "Angular Reactive Forms con validaciones complejas en tiempo real.",
+        "crud": "Implementación completa de CRUD sobre mock API con JSON Server.",
+        "docker": "Setup containerizado con Docker — solo Git y Docker requeridos para correr el proyecto."
+      },
+      "links": {
+        "frontend": "Repo Frontend",
+        "backend": "Repo Backend"
+      }
+    },
+    "bonvoyage": {
+      "title": "BonVoyageApp",
+      "tagline": "Aplicación de escritorio en JavaFX para búsqueda de viajes, alojamientos y armado de paquetes a medida.",
+      "taglineLong": "Aplicación de escritorio en JavaFX que permite buscar viajes y alojamientos, y armar paquetes turísticos a medida. Proyecto final de la materia Programación II — Tecnicatura Universitaria en Programación, UTN Mar del Plata.",
+      "coAuthor": "Trabajo grupal de 4 personas, en co-autoría con Diego Maidana entre los autores.",
+      "role": "Mi participación abarcó la lógica de programación de varios módulos, el manejo de errores y la corrección de bugs a lo largo del desarrollo.",
+      "highlights": {
+        "javafx": "Interfaz gráfica de escritorio con JavaFX.",
+        "json": "Persistencia en archivos JSON sin ORM, manejo manual de lectura y escritura.",
+        "mvc": "Arquitectura MVC separando vistas, controladores y modelos.",
+        "poo": "Implementación de POO avanzada (herencia, polimorfismo, encapsulamiento) para una arquitectura escalable.",
+        "luhn": "Verificación real de tarjetas de crédito y débito con algoritmo de Luhn."
+      }
+    },
+    "misfinanzas": {
+      "title": "Mis Finanzas",
+      "tagline": "App móvil para gestionar finanzas personales — gastos, ingresos, transferencias y tarjetas — con sincronización en la nube y modo offline-first.",
+      "taglineLong": "Aplicación móvil de tracking financiero personal construida en Kotlin Multiplatform y Jetpack Compose. Permite registrar y categorizar ingresos, egresos, transferencias y movimientos de tarjeta de crédito, con almacenamiento local y sincronización opcional en la nube. App de uso personal: no procesa dinero real ni se conecta a entidades bancarias.",
+      "motivation": "Uso apps como Wallet, pero las opciones de pago disponibles me limitaban a registrar todo como yo necesitaba. Quería una herramienta hecha a mi medida — y, de paso, profundizar en Kotlin y Jetpack Compose. Una excusa para aprender un stack moderno con un dominio que me importa.",
+      "currentState": "MVP funcional con sincronización cloud y modo offline. Refinando casos límite, como la lógica de transferencias.",
+      "role": "Proyecto personal, 100% código mío. Diseño, arquitectura, UI, persistencia y sincronización.",
+      "highlights": {
+        "offline": "Offline-first (Local Wins): la app funciona sin conexión y sincroniza al recuperar internet.",
+        "cloud": "Sincronización en la nube con Supabase (Auth, Postgrest, Realtime).",
+        "auth": "Autenticación dual: Google OAuth + email/password.",
+        "persistence": "Persistencia local con SQLDelight sobre SQLite (WAL y FK constraints).",
+        "architecture": "Arquitectura Clean + MVVM, inyección de dependencias con Koin.",
+        "compose": "UI declarativa con Jetpack Compose y Material 3."
+      }
+    }
+  },
+  "experience": {
+    "title": "Experiencia",
+    "subtitle": "Formación, docencia y trabajo. Cuatro años construyendo este perfil.",
+    "present": "Presente",
+    "complementary": "Formación complementaria"
+  },
+  "experienceData": {
+    "tup": {
+      "role": "Tecnicatura Universitaria en Programación",
+      "org": "UTN Mar del Plata · Cursando (tesis en curso)",
+      "description": "Promedio 8.88 (sin tesis). Tesis en curso: Loki — plataforma de e-commerce con regateo en tiempo real."
+    },
+    "teaching": {
+      "role": "Ayudante de Cátedra",
+      "org": "UTN Mar del Plata",
+      "description": "Atención a consultas de alumnos y armado de evaluaciones (quizzes) para clases prácticas.",
+      "subjects": {
+        "math": "Matemática — Ayudante-Estudiante · mar. 2025 – jul. 2025",
+        "prog3": "Programación III — Ayudante · mar. 2026 – Presente",
+        "db2": "Base de Datos II — Ayudante · mar. 2026 – Presente",
+        "soArch": "Arquitectura en Sistemas Operativos — Ayudante · mar. 2026 – Presente"
+      }
+    },
+    "antares": {
+      "role": "Manager · Antares",
+      "org": "Mar del Plata",
+      "progression": "Progresión interna: Cocinero (2022–2023, 2024) → Bartender (sep. 2024 – sep. 2025) → Encargado / Manager (sep. 2025 – Presente).",
+      "description": "Como Manager: lidero un equipo de 8+ personas. Armo horarios, capacito personal nuevo, manejo conflictos del día a día y soy el puente entre los dueños y el equipo. Responsable de cierre de caja, gestión de inventario y control de stock, y atención a clientes con reclamos."
+    }
+  },
+  "contact": {
+    "title": "Contacto",
+    "subtitle": "Estoy en búsqueda activa de mi primera experiencia profesional como desarrollador. Si tu equipo está sumando, me encantaría conversar.",
+    "channels": {
+      "email": "Email",
+      "whatsapp": "WhatsApp",
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "downloadCv": "Descargar CV"
+    },
+    "form": {
+      "name": "Nombre",
+      "email": "Email",
+      "subject": "Asunto (opcional)",
+      "message": "Mensaje",
+      "send": "Enviar mensaje",
+      "sending": "Enviando…",
+      "success": "¡Mensaje enviado! Te respondo en cuanto pueda.",
+      "error": "Algo falló. Probá de nuevo o escribime por email.",
+      "validation": {
+        "required": "Este campo es obligatorio.",
+        "email": "Ingresá un email válido.",
+        "minLength": "Demasiado corto."
+      }
+    }
+  },
+  "footer": {
+    "tagline": "Desarrollador en formación · Mar del Plata, Argentina",
+    "rights": "© {{year}} Lucas Camino · Hecho con Angular"
+  },
+  "header": {
+    "skipToContent": "Saltar al contenido",
+    "toggleTheme": "Cambiar tema",
+    "toggleLanguage": "Cambiar idioma",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú"
+  }
+}

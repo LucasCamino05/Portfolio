@@ -1,0 +1,64 @@
+<section id="projects" class="projects" appReveal>
+  <div class="projects__inner">
+    <app-section-title
+      titleKey="projects.title"
+      subtitleKey="projects.subtitle"
+      eyebrow="04"
+    />
+
+    <ul class="projects__grid">
+      @for (project of projects; track project.slug) {
+        <li class="projects__card">
+          <div class="projects__cover" [class.is-placeholder]="!project.cover">
+            <span class="projects__cover-mark">{{ project.slug.toUpperCase() }}</span>
+            <span
+              class="projects__status"
+              [class.is-progress]="project.status === 'in-progress'"
+              [class.is-done]="project.status === 'completed'"
+            >
+              {{ statusKey(project) | translate }}
+            </span>
+          </div>
+
+          <div class="projects__body">
+            <h3 class="projects__name">{{ project.titleKey | translate }}</h3>
+            <p class="projects__tagline">{{ project.taglineKey | translate }}</p>
+
+            <ul class="projects__chips">
+              @for (tech of project.stack.slice(0, 5); track tech) {
+                <li>{{ tech }}</li>
+              }
+              @if (project.stack.length > 5) {
+                <li class="is-more">+{{ project.stack.length - 5 }}</li>
+              }
+            </ul>
+
+            <div class="projects__actions">
+              <a
+                class="projects__cta"
+                [routerLink]="['/proyectos', project.slug]"
+              >
+                {{ 'projects.viewMore' | translate }}
+                <lucide-icon [img]="ArrowUpRightIcon" [size]="16" />
+              </a>
+
+              @for (link of project.links; track link.url) {
+                @if (!link.disabled) {
+                  <a
+                    class="projects__link"
+                    [href]="link.url"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    <lucide-icon [img]="GithubIcon" [size]="14" />
+                    {{ link.labelKey | translate }}
+                  </a>
+                }
+              }
+            </div>
+          </div>
+        </li>
+      }
+    </ul>
+  </div>
+</section>

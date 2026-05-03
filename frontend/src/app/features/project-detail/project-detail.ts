@@ -1,0 +1,44 @@
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+import {
+  ArrowLeft,
+  ExternalLink,
+  Github,
+  Lock,
+  LucideAngularModule,
+} from 'lucide-angular';
+import { findProjectBySlug } from '../../data/projects.data';
+import { RevealDirective } from '../../shared/directives/reveal.directive';
+
+@Component({
+  selector: 'app-project-detail',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [LucideAngularModule, RouterLink, TranslatePipe, RevealDirective],
+  templateUrl: './project-detail.html',
+  styleUrl: './project-detail.scss',
+})
+export class ProjectDetailComponent {
+  private readonly route = inject(ActivatedRoute);
+
+  protected readonly ArrowLeftIcon = ArrowLeft;
+  protected readonly ExternalLinkIcon = ExternalLink;
+  protected readonly GithubIcon = Github;
+  protected readonly LockIcon = Lock;
+
+  private readonly slug = toSignal(this.route.paramMap, { requireSync: true });
+
+  protected readonly project = computed(() => {
+    const slug = this.slug().get('slug') ?? '';
+    return findProjectBySlug(slug);
+  });
+
+  protected statusKey(): string {
+    const p = this.project();
+    if (!p) return '';
+    return p.status === 'in-progress'
+      ? 'projects.status.inProgress'
+      : 'projects.status.completed';
+  }
+}

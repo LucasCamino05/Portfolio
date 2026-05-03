@@ -1,0 +1,86 @@
+@use 'tokens' as t;
+
+// =============================================================
+// Theming dual con CSS custom properties.
+// Las variables se aplican a `:root[data-theme="dark|light"]`.
+// Los componentes consumen `var(--color-*)`, no los tokens directos,
+// para que el toggle de tema funcione sin recompilar.
+// =============================================================
+
+:root,
+:root[data-theme='dark'] {
+  // --- Surface ---
+  --color-bg: #0b0f17;
+  --color-surface: #151b26;
+  --color-surface-elevated: #1c2330;
+  --color-border: #232b3b;
+  --color-border-strong: #2e384c;
+
+  // --- Texto ---
+  --color-text: #e5e7eb;
+  --color-text-muted: #9ca3af;
+  --color-text-subtle: #6b7280;
+  --color-text-inverse: #0b0f17;
+
+  // --- Acentos (violet) ---
+  --color-accent: #{t.$violet-500};
+  --color-accent-hover: #{t.$violet-400};
+  --color-accent-strong: #{t.$violet-600};
+  --color-accent-soft: #{t.$violet-300};
+  --color-accent-bg: rgba(139, 92, 246, 0.1);
+  --color-accent-border: rgba(139, 92, 246, 0.3);
+
+  // --- Estados ---
+  --color-success: #34d399;
+  --color-warning: #fbbf24;
+  --color-danger: #f87171;
+
+  // --- Aurora & grid (decoración) ---
+  --aurora-1: rgba(139, 92, 246, 0.35);
+  --aurora-2: rgba(196, 181, 253, 0.18);
+  --grid-color: rgba(255, 255, 255, 0.04);
+
+  // --- Sombras ---
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 30px rgba(139, 92, 246, 0.25);
+}
+
+:root[data-theme='light'] {
+  --color-bg: #fafaf9;
+  --color-surface: #ffffff;
+  --color-surface-elevated: #ffffff;
+  --color-border: #e5e7eb;
+  --color-border-strong: #d1d5db;
+
+  --color-text: #111827;
+  --color-text-muted: #4b5563;
+  --color-text-subtle: #6b7280;
+  --color-text-inverse: #ffffff;
+
+  --color-accent: #{t.$violet-600};
+  --color-accent-hover: #{t.$violet-700};
+  --color-accent-strong: #{t.$violet-700};
+  --color-accent-soft: #{t.$violet-400};
+  --color-accent-bg: rgba(124, 58, 237, 0.08);
+  --color-accent-border: rgba(124, 58, 237, 0.25);
+
+  --color-success: #059669;
+  --color-warning: #d97706;
+  --color-danger: #dc2626;
+
+  --aurora-1: rgba(139, 92, 246, 0.18);
+  --aurora-2: rgba(196, 181, 253, 0.12);
+  --grid-color: rgba(17, 24, 39, 0.05);
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+  --shadow-glow: 0 0 30px rgba(139, 92, 246, 0.18);
+}
+
+// Transición global del tema (excluye partes con animaciones propias)
+:root {
+  --theme-transition: background-color 300ms ease, color 200ms ease, border-color 200ms ease;
+}

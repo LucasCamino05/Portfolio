@@ -1,0 +1,32 @@
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__col footer__col--brand">
+      <strong class="footer__name">{{ site.ownerName }}</strong>
+      <p class="footer__tagline">{{ 'footer.tagline' | translate }}</p>
+    </div>
+
+    <div class="footer__col footer__col--controls">
+      <app-language-switcher />
+      <app-theme-toggle />
+    </div>
+
+    <div class="footer__col footer__col--social">
+      <a [href]="site.contact.linkedin" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <lucide-icon [img]="LinkedinIcon" [size]="18" />
+      </a>
+      <a [href]="site.contact.github" target="_blank" rel="noopener" aria-label="GitHub">
+        <lucide-icon [img]="GithubIcon" [size]="18" />
+      </a>
+      <a [href]="site.contact.whatsappHref" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <lucide-icon [img]="MessageCircleIcon" [size]="18" />
+      </a>
+      <a [href]="'mailto:' + site.contact.email" aria-label="Email">
+        <lucide-icon [img]="MailIcon" [size]="18" />
+      </a>
+    </div>
+  </div>
+
+  <div class="footer__rights">
+    {{ 'footer.rights' | translate: { year: year } }}
+  </div>
+</footer>

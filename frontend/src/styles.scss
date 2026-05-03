@@ -1,0 +1,7 @@
+// Entry point global de estilos.
+// Orden importante: tokens → themes (CSS vars) → reset → tipografía → animaciones.
+@use 'styles/tokens';
+@use 'styles/themes';
+@use 'styles/reset';
+@use 'styles/typography';
+@use 'styles/animations';

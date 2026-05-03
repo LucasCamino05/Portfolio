@@ -1,0 +1,25 @@
+<section id="skills" class="soft-skills" appReveal>
+  <div class="soft-skills__inner">
+    <app-section-title
+      titleKey="softSkills.title"
+      subtitleKey="softSkills.subtitle"
+      eyebrow="02"
+    />
+
+    <ul class="soft-skills__grid">
+      @for (skill of skills; track skill.key) {
+        <li class="soft-skills__card">
+          <div class="soft-skills__icon">
+            <lucide-icon [img]="resolveIcon(skill.icon)" [size]="20" />
+          </div>
+          <h3 class="soft-skills__name">
+            {{ 'softSkills.items.' + skill.key + '.title' | translate }}
+          </h3>
+          <p class="soft-skills__evidence">
+            {{ 'softSkills.items.' + skill.key + '.evidence' | translate }}
+          </p>
+        </li>
+      }
+    </ul>
+  </div>
+</section>

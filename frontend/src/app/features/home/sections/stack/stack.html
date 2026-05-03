@@ -1,0 +1,24 @@
+<section id="stack" class="stack" appReveal>
+  <div class="stack__inner">
+    <app-section-title
+      titleKey="stack.title"
+      subtitleKey="stack.subtitle"
+      eyebrow="03"
+    />
+
+    <div class="stack__categories">
+      @for (cat of stack; track cat.key) {
+        <div class="stack__category">
+          <h3 class="stack__category-name">
+            {{ 'stack.categories.' + cat.key | translate }}
+          </h3>
+          <ul class="stack__chips">
+            @for (item of cat.items; track item.name) {
+              <li class="stack__chip">{{ item.name }}</li>
+            }
+          </ul>
+        </div>
+      }
+    </div>
+  </div>
+</section>

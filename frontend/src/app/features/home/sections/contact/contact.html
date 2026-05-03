@@ -1,0 +1,162 @@
+<section id="contact" class="contact" appReveal>
+  <div class="contact__inner">
+    <app-section-title
+      titleKey="contact.title"
+      subtitleKey="contact.subtitle"
+      eyebrow="06"
+    />
+
+    <div class="contact__layout">
+      <!-- Canales -->
+      <ul class="contact__channels">
+        <li>
+          <a [href]="'mailto:' + site.contact.email" class="contact__channel">
+            <lucide-icon [img]="MailIcon" [size]="20" />
+            <div>
+              <span class="contact__channel-label">{{ 'contact.channels.email' | translate }}</span>
+              <span class="contact__channel-value">{{ site.contact.email }}</span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a
+            [href]="site.contact.whatsappHref"
+            target="_blank"
+            rel="noopener"
+            class="contact__channel"
+          >
+            <lucide-icon [img]="WhatsappIcon" [size]="20" />
+            <div>
+              <span class="contact__channel-label">{{ 'contact.channels.whatsapp' | translate }}</span>
+              <span class="contact__channel-value">@LucasCamino</span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a
+            [href]="site.contact.linkedin"
+            target="_blank"
+            rel="noopener"
+            class="contact__channel"
+          >
+            <lucide-icon [img]="LinkedinIcon" [size]="20" />
+            <div>
+              <span class="contact__channel-label">{{ 'contact.channels.linkedin' | translate }}</span>
+              <span class="contact__channel-value">in/lucas-camino</span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a
+            [href]="site.contact.github"
+            target="_blank"
+            rel="noopener"
+            class="contact__channel"
+          >
+            <lucide-icon [img]="GithubIcon" [size]="20" />
+            <div>
+              <span class="contact__channel-label">{{ 'contact.channels.github' | translate }}</span>
+              <span class="contact__channel-value">LucasCamino05</span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a [href]="site.contact.cvPath" download class="contact__channel contact__channel--cv">
+            <lucide-icon [img]="DownloadIcon" [size]="20" />
+            <div>
+              <span class="contact__channel-label">{{ 'contact.channels.downloadCv' | translate }}</span>
+              <span class="contact__channel-value">PDF</span>
+            </div>
+          </a>
+        </li>
+      </ul>
+
+      <!-- Formulario -->
+      <form
+        class="contact__form"
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()"
+        novalidate
+      >
+        <div class="contact__field">
+          <label for="contact-name">{{ 'contact.form.name' | translate }}</label>
+          <input
+            id="contact-name"
+            type="text"
+            formControlName="name"
+            autocomplete="name"
+          />
+          @if (form.controls.name.touched && form.controls.name.invalid) {
+            <small class="contact__error">{{ 'contact.form.validation.required' | translate }}</small>
+          }
+        </div>
+
+        <div class="contact__field">
+          <label for="contact-email">{{ 'contact.form.email' | translate }}</label>
+          <input
+            id="contact-email"
+            type="email"
+            formControlName="email"
+            autocomplete="email"
+          />
+          @if (form.controls.email.touched && form.controls.email.invalid) {
+            <small class="contact__error">
+              @if (form.controls.email.errors?.['required']) {
+                {{ 'contact.form.validation.required' | translate }}
+              } @else {
+                {{ 'contact.form.validation.email' | translate }}
+              }
+            </small>
+          }
+        </div>
+
+        <div class="contact__field">
+          <label for="contact-subject">{{ 'contact.form.subject' | translate }}</label>
+          <input id="contact-subject" type="text" formControlName="subject" />
+        </div>
+
+        <div class="contact__field">
+          <label for="contact-message">{{ 'contact.form.message' | translate }}</label>
+          <textarea
+            id="contact-message"
+            rows="5"
+            formControlName="message"
+          ></textarea>
+          @if (form.controls.message.touched && form.controls.message.invalid) {
+            <small class="contact__error">
+              @if (form.controls.message.errors?.['required']) {
+                {{ 'contact.form.validation.required' | translate }}
+              } @else {
+                {{ 'contact.form.validation.minLength' | translate }}
+              }
+            </small>
+          }
+        </div>
+
+        <button
+          type="submit"
+          class="contact__submit"
+          [disabled]="status() === 'loading'"
+        >
+          <lucide-icon [img]="SendIcon" [size]="16" />
+          @if (status() === 'loading') {
+            {{ 'contact.form.sending' | translate }}
+          } @else {
+            {{ 'contact.form.send' | translate }}
+          }
+        </button>
+
+        @if (status() === 'success') {
+          <p class="contact__feedback contact__feedback--success">
+            {{ 'contact.form.success' | translate }}
+          </p>
+        }
+        @if (status() === 'error') {
+          <p class="contact__feedback contact__feedback--error">
+            {{ 'contact.form.error' | translate }}
+          </p>
+        }
+      </form>
+    </div>
+  </div>
+</section>

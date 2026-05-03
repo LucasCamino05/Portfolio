@@ -1,0 +1,46 @@
+<a class="skip-link" href="#main">{{ 'header.skipToContent' | translate }}</a>
+
+<header class="header">
+  <div class="header__inner">
+    <a class="header__brand" routerLink="/" fragment="hero" (click)="closeMobile()">
+      <span class="header__brand-mark">LC</span>
+      <span class="header__brand-name">Lucas Camino</span>
+    </a>
+
+    <nav class="header__nav" [class.is-open]="mobileOpen()" aria-label="Main">
+      <ul class="header__list">
+        @for (link of links; track link.fragment) {
+          <li>
+            <a
+              class="header__link"
+              routerLink="/"
+              [fragment]="link.fragment"
+              (click)="closeMobile()"
+            >
+              {{ link.labelKey | translate }}
+            </a>
+          </li>
+        }
+      </ul>
+    </nav>
+
+    <div class="header__controls">
+      <app-language-switcher />
+      <app-theme-toggle />
+
+      <button
+        type="button"
+        class="header__burger"
+        [attr.aria-expanded]="mobileOpen()"
+        [attr.aria-label]="(mobileOpen() ? 'header.closeMenu' : 'header.openMenu') | translate"
+        (click)="toggleMobile()"
+      >
+        @if (mobileOpen()) {
+          <lucide-icon [img]="XIcon" [size]="20" />
+        } @else {
+          <lucide-icon [img]="MenuIcon" [size]="20" />
+        }
+      </button>
+    </div>
+  </div>
+</header>
