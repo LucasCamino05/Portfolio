@@ -1,6 +1,9 @@
+# Netlify config — vive en la raíz del repo (Netlify lo busca acá).
+# Las rutas `publish` y `command` se resuelven RELATIVAS a `base`.
+
 [build]
   base    = "frontend"
-  publish = "frontend/dist/frontend/browser"
+  publish = "dist/frontend/browser"
   command = "npm ci && npm run build"
 
 [build.environment]
@@ -17,7 +20,7 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    X-Frame-Options       = "SAMEORIGIN"
+    X-Frame-Options        = "SAMEORIGIN"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy        = "strict-origin-when-cross-origin"
 
