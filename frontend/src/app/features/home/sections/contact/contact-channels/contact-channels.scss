@@ -1,0 +1,54 @@
+@use '../../../../../../styles/tokens' as t;
+@use '../../../../../../styles/mixins' as m;
+
+.contact-channels {
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-3;
+}
+
+.contact-channel {
+  @include m.card;
+  padding: t.$space-4;
+  display: flex;
+  align-items: center;
+  gap: t.$space-4;
+  color: var(--color-text);
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__label {
+    font-family: t.$font-mono;
+    font-size: t.$text-xs;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+  }
+
+  &__value {
+    color: var(--color-text);
+    font-weight: t.$font-medium;
+  }
+
+  &:hover {
+    border-color: var(--color-accent);
+    transform: translateX(4px);
+    color: var(--color-accent);
+
+    .contact-channel__value { color: var(--color-accent); }
+  }
+
+  &--cv {
+    background: var(--color-accent-bg);
+    border-color: var(--color-accent-border);
+    color: var(--color-accent);
+
+    .contact-channel__value { color: var(--color-accent); }
+  }
+
+  lucide-icon { color: var(--color-accent); }
+}

@@ -1,7 +1,8 @@
 package com.lucascamino.portfolio.config;
 
 import com.lucascamino.portfolio.contact.ContactResponse;
-import com.lucascamino.portfolio.contact.ContactService;
+import com.lucascamino.portfolio.contact.ErrorCode;
+import com.lucascamino.portfolio.contact.exception.ContactDeliveryException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,13 +15,13 @@ import java.util.stream.Collectors;
 
 /**
  * Convierte excepciones de la app en respuestas JSON consistentes.
- * El frontend interpreta el campo {@code error} como clave i18n.
+ * El frontend interpreta {@code error} como clave i18n.
  */
 @RestControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler {
 
-    /** Errores de validación de @Valid. Devuelve 400 con detalle. */
+    /** Errores de validación de @Valid. 400 con detalle agregado. */
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ContactResponse> handleValidation(MethodArgumentNotValidException ex) {
         var detail = ex.getBindingResult().getFieldErrors().stream()
@@ -28,39 +29,39 @@ public class GlobalExceptionHandler {
                 .collect(Collectors.joining(","));
 
         log.info("Validación fallida: {}", detail);
-
-        return ResponseEntity.badRequest().body(ContactResponse.builder()
-                .ok(false)
-                .error("validation.failed")
-                .build());
+        return badRequest(ErrorCode.VALIDATION_FAILED);
     }
 
     /** JSON malformado o body ausente. */
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<ContactResponse> handleUnreadable(HttpMessageNotReadableException ex) {
         log.info("Body no leíble: {}", ex.getMostSpecificCause().getMessage());
-        return ResponseEntity.badRequest().body(ContactResponse.builder()
-                .ok(false)
-                .error("request.malformed")
-                .build());
+        return badRequest(ErrorCode.REQUEST_MALFORMED);
     }
 
-    /** Falla del envío SMTP. 502 Bad Gateway porque dependimos de un servicio externo. */
-    @ExceptionHandler(ContactService.ContactDeliveryException.class)
-    public ResponseEntity<ContactResponse> handleDelivery(ContactService.ContactDeliveryException ex) {
-        return ResponseEntity.status(HttpStatus.BAD_GATEWAY).body(ContactResponse.builder()
-                .ok(false)
-                .error("delivery.failed")
-                .build());
+    /** Falla del envío SMTP. 502 — dependimos de un servicio externo. */
+    @ExceptionHandler(ContactDeliveryException.class)
+    public ResponseEntity<ContactResponse> handleDelivery(ContactDeliveryException ex) {
+        return errorResponse(HttpStatus.BAD_GATEWAY, ErrorCode.DELIVERY_FAILED);
     }
 
     /** Catch-all defensivo. */
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ContactResponse> handleGeneric(Exception ex) {
         log.error("Error inesperado: {}", ex.getMessage(), ex);
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ContactResponse.builder()
+        return errorResponse(HttpStatus.INTERNAL_SERVER_ERROR, ErrorCode.SERVER_ERROR);
+    }
+
+    // ─── Helpers ──────────────────────────────────────────────
+
+    private ResponseEntity<ContactResponse> badRequest(ErrorCode code) {
+        return errorResponse(HttpStatus.BAD_REQUEST, code);
+    }
+
+    private ResponseEntity<ContactResponse> errorResponse(HttpStatus status, ErrorCode code) {
+        return ResponseEntity.status(status).body(ContactResponse.builder()
                 .ok(false)
-                .error("server.error")
+                .error(code.value())
                 .build());
     }
 }
