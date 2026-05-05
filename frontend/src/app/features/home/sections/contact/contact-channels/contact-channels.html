@@ -1,0 +1,62 @@
+<ul class="contact-channels">
+  <li>
+    <a [href]="'mailto:' + site.contact.email" class="contact-channel">
+      <lucide-icon [img]="MailIcon" [size]="20" />
+      <div>
+        <span class="contact-channel__label">{{ 'contact.channels.email' | translate }}</span>
+        <span class="contact-channel__value">{{ site.contact.email }}</span>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a
+      [href]="site.contact.whatsappHref"
+      target="_blank"
+      rel="noopener"
+      class="contact-channel"
+    >
+      <lucide-icon [img]="WhatsappIcon" [size]="20" />
+      <div>
+        <span class="contact-channel__label">{{ 'contact.channels.whatsapp' | translate }}</span>
+        <span class="contact-channel__value">@LucasCamino</span>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a
+      [href]="site.contact.linkedin"
+      target="_blank"
+      rel="noopener"
+      class="contact-channel"
+    >
+      <lucide-icon [img]="LinkedinIcon" [size]="20" />
+      <div>
+        <span class="contact-channel__label">{{ 'contact.channels.linkedin' | translate }}</span>
+        <span class="contact-channel__value">in/lucas-camino</span>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a
+      [href]="site.contact.github"
+      target="_blank"
+      rel="noopener"
+      class="contact-channel"
+    >
+      <lucide-icon [img]="GithubIcon" [size]="20" />
+      <div>
+        <span class="contact-channel__label">{{ 'contact.channels.github' | translate }}</span>
+        <span class="contact-channel__value">LucasCamino05</span>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a [href]="site.contact.cvPath" download class="contact-channel contact-channel--cv">
+      <lucide-icon [img]="DownloadIcon" [size]="20" />
+      <div>
+        <span class="contact-channel__label">{{ 'contact.channels.downloadCv' | translate }}</span>
+        <span class="contact-channel__value">PDF</span>
+      </div>
+    </a>
+  </li>
+</ul>

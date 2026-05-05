@@ -1,0 +1,85 @@
+<form
+  class="contact-form"
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()"
+  novalidate
+>
+  <div class="contact-form__field">
+    <label for="contact-name">{{ 'contact.form.name' | translate }}</label>
+    <input
+      id="contact-name"
+      type="text"
+      formControlName="name"
+      autocomplete="name"
+    />
+    @if (form.controls.name.touched && form.controls.name.invalid) {
+      <small class="contact-form__error">{{ 'contact.form.validation.required' | translate }}</small>
+    }
+  </div>
+
+  <div class="contact-form__field">
+    <label for="contact-email">{{ 'contact.form.email' | translate }}</label>
+    <input
+      id="contact-email"
+      type="email"
+      formControlName="email"
+      autocomplete="email"
+    />
+    @if (form.controls.email.touched && form.controls.email.invalid) {
+      <small class="contact-form__error">
+        @if (form.controls.email.errors?.['required']) {
+          {{ 'contact.form.validation.required' | translate }}
+        } @else {
+          {{ 'contact.form.validation.email' | translate }}
+        }
+      </small>
+    }
+  </div>
+
+  <div class="contact-form__field">
+    <label for="contact-subject">{{ 'contact.form.subject' | translate }}</label>
+    <input id="contact-subject" type="text" formControlName="subject" />
+  </div>
+
+  <div class="contact-form__field">
+    <label for="contact-message">{{ 'contact.form.message' | translate }}</label>
+    <textarea
+      id="contact-message"
+      rows="5"
+      formControlName="message"
+    ></textarea>
+    @if (form.controls.message.touched && form.controls.message.invalid) {
+      <small class="contact-form__error">
+        @if (form.controls.message.errors?.['required']) {
+          {{ 'contact.form.validation.required' | translate }}
+        } @else {
+          {{ 'contact.form.validation.minLength' | translate }}
+        }
+      </small>
+    }
+  </div>
+
+  <button
+    type="submit"
+    class="contact-form__submit"
+    [disabled]="status() === 'loading'"
+  >
+    <lucide-icon [img]="SendIcon" [size]="16" />
+    @if (status() === 'loading') {
+      {{ 'contact.form.sending' | translate }}
+    } @else {
+      {{ 'contact.form.send' | translate }}
+    }
+  </button>
+
+  @if (status() === 'success') {
+    <p class="contact-form__feedback contact-form__feedback--success">
+      {{ 'contact.form.success' | translate }}
+    </p>
+  }
+  @if (status() === 'error') {
+    <p class="contact-form__feedback contact-form__feedback--error">
+      {{ 'contact.form.error' | translate }}
+    </p>
+  }
+</form>
