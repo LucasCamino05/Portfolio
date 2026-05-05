@@ -1,10 +1,9 @@
 /**
  * Environment de producción.
  *
- * apiBaseUrl: actualizar al deployar el backend en Render.
- * Ejemplo: 'https://portfolio-backend-lucascamino.onrender.com'
+ * apiBaseUrl apunta al servicio del backend deployado en Render.
  */
 export const environment = {
   production: true,
-  apiBaseUrl: 'https://portfolio-backend.onrender.com',
+  apiBaseUrl: 'https://portfolio-backend-2bwe.onrender.com',
 };
