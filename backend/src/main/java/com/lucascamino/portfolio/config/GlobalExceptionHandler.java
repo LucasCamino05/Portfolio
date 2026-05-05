@@ -10,6 +10,7 @@ import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import java.util.stream.Collectors;
 
@@ -43,6 +44,19 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(ContactDeliveryException.class)
     public ResponseEntity<ContactResponse> handleDelivery(ContactDeliveryException ex) {
         return errorResponse(HttpStatus.BAD_GATEWAY, ErrorCode.DELIVERY_FAILED);
+    }
+
+    /**
+     * Recursos estáticos no encontrados (típicamente {@code /} y
+     * {@code /favicon.ico} cuando un navegador navega al backend).
+     *
+     * Esta API no sirve assets — solo expone /health y /contact.
+     * Devolvemos 404 limpio sin stack trace para no llenar los logs de
+     * Render con errores de cosmética.
+     */
+    @ExceptionHandler(NoResourceFoundException.class)
+    public ResponseEntity<Void> handleNoResource(NoResourceFoundException ex) {
+        return ResponseEntity.notFound().build();
     }
 
     /** Catch-all defensivo. */
