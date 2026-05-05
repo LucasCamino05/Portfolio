@@ -1,0 +1,40 @@
+<li class="experience-entry">
+  <div class="experience-entry__icon">
+    <lucide-icon [img]="resolveIcon(entry().icon)" [size]="18" />
+  </div>
+  <div class="experience-entry__content">
+    <div class="experience-entry__head">
+      <h3 class="experience-entry__role">
+        {{ 'experienceData.' + entry().key + '.role' | translate }}
+      </h3>
+      <span class="experience-entry__period">
+        {{ entry().period }}
+        @if (entry().present) {
+          <span class="experience-entry__present">{{ 'experience.present' | translate }}</span>
+        }
+      </span>
+    </div>
+
+    <p class="experience-entry__org">
+      {{ 'experienceData.' + entry().key + '.org' | translate }}
+    </p>
+
+    @if (entry().key === 'antares') {
+      <p class="experience-entry__progression">
+        {{ 'experienceData.antares.progression' | translate }}
+      </p>
+    }
+
+    <p class="experience-entry__desc">
+      {{ 'experienceData.' + entry().key + '.description' | translate }}
+    </p>
+
+    @if (entry().key === 'teaching') {
+      <ul class="experience-entry__subjects">
+        @for (subj of teachingSubjects; track subj) {
+          <li>{{ 'experienceData.teaching.subjects.' + subj | translate }}</li>
+        }
+      </ul>
+    }
+  </div>
+</li>

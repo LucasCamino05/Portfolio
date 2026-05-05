@@ -1,0 +1,38 @@
+@use '../../../../styles/tokens' as t;
+
+.tech-chip {
+  display: inline-flex;
+  align-items: center;
+  font-family: t.$font-mono;
+  font-weight: t.$font-medium;
+  transition: t.$transition-fast;
+
+  // Default: outline en superficie neutra
+  padding: t.$space-2 t.$space-3;
+  border-radius: t.$radius-full;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  font-size: t.$text-xs;
+
+  &:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    transform: translateY(-2px);
+  }
+
+  // Variante solid: pequeña, sobre fondo violeta-soft (sin hover)
+  &--solid {
+    padding: 2px t.$space-2;
+    border-radius: t.$radius-sm;
+    background: var(--color-accent-bg);
+    border: none;
+    color: var(--color-accent);
+    font-size: 0.7rem;
+
+    &:hover {
+      transform: none;
+      color: var(--color-accent);
+    }
+  }
+}

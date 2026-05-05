@@ -1,0 +1,15 @@
+@use '../../../../styles/tokens' as t;
+@use '../../../../styles/mixins' as m;
+
+.section {
+  @include m.section;
+
+  &.surface {
+    background: var(--color-surface);
+    transition: var(--theme-transition);
+  }
+
+  &__inner {
+    @include m.container;
+  }
+}

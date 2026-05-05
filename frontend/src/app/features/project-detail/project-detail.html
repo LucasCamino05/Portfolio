@@ -7,13 +7,7 @@
       </a>
 
       <header class="detail__header" appReveal>
-        <span
-          class="detail__status"
-          [class.is-progress]="p.status === 'in-progress'"
-          [class.is-done]="p.status === 'completed'"
-        >
-          {{ statusKey() | translate }}
-        </span>
+        <app-status-badge [status]="p.status" />
 
         <h1 class="detail__title">{{ p.titleKey | translate }}</h1>
         <p class="detail__tagline">{{ p.taglineLongKey | translate }}</p>
@@ -27,7 +21,7 @@
         <h2>{{ 'projects.stack' | translate }}</h2>
         <ul class="detail__chips">
           @for (tech of p.stack; track tech) {
-            <li>{{ tech }}</li>
+            <li><app-tech-chip [label]="tech" /></li>
           }
         </ul>
       </section>

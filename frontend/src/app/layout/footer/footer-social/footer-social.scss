@@ -1,0 +1,7 @@
+@use '../../../../styles/tokens' as t;
+
+.footer-social {
+  display: flex;
+  align-items: center;
+  gap: t.$space-2;
+}

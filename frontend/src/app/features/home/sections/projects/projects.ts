@@ -1,32 +1,28 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { TranslatePipe } from '@ngx-translate/core';
-import { ArrowUpRight, Github, LucideAngularModule } from 'lucide-angular';
-import { PROJECTS, Project } from '../../../../data/projects.data';
-import { RevealDirective } from '../../../../shared/directives/reveal.directive';
-import { SectionTitleComponent } from '../../../../shared/components/section-title/section-title';
+import { PROJECTS } from '../../../../data/projects.data';
+import { SectionComponent } from '../../../../shared/components/section/section';
+import { ProjectCardComponent } from './project-card/project-card';
 
 @Component({
   selector: 'app-projects',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    LucideAngularModule,
-    RouterLink,
-    TranslatePipe,
-    RevealDirective,
-    SectionTitleComponent,
-  ],
-  templateUrl: './projects.html',
+  imports: [SectionComponent, ProjectCardComponent],
+  template: `
+    <app-section
+      id="projects"
+      titleKey="projects.title"
+      subtitleKey="projects.subtitle"
+      eyebrow="04"
+    >
+      <ul class="projects-grid">
+        @for (project of projects; track project.slug) {
+          <li><app-project-card [project]="project" /></li>
+        }
+      </ul>
+    </app-section>
+  `,
   styleUrl: './projects.scss',
 })
 export class ProjectsComponent {
-  protected readonly projects: Project[] = PROJECTS;
-  protected readonly ArrowUpRightIcon = ArrowUpRight;
-  protected readonly GithubIcon = Github;
-
-  protected statusKey(p: Project): string {
-    return p.status === 'in-progress'
-      ? 'projects.status.inProgress'
-      : 'projects.status.completed';
-  }
+  protected readonly projects = PROJECTS;
 }

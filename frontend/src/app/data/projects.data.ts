@@ -1,43 +1,4 @@
-export type ProjectStatus = 'in-progress' | 'completed';
-
-export interface ProjectLink {
-  /** Clave i18n para el label, p.ej. "projects.viewCode". */
-  labelKey: string;
-  url: string;
-  /** Si true, no se renderiza como link clickeable (texto informativo). */
-  disabled?: boolean;
-  /** Lucide icon name. */
-  icon?: string;
-}
-
-export interface ProjectHighlight {
-  /** Clave i18n del highlight (será definida por proyecto). */
-  key: string;
-}
-
-export interface Project {
-  slug: string;
-  /** Clave i18n del título corto. Resolvió a string vía translate pipe. */
-  titleKey: string;
-  /** Clave i18n para tagline corta de la card. */
-  taglineKey: string;
-  /** Clave i18n para tagline larga del detalle (con siglas desplegadas). */
-  taglineLongKey: string;
-  /** Clave i18n del párrafo de motivación / contexto del detalle. */
-  motivationKey?: string;
-  status: ProjectStatus;
-  stack: string[];
-  highlights: ProjectHighlight[];
-  /** Clave i18n del bloque "mi rol". */
-  roleKey: string;
-  /** Clave i18n del estado actual (texto narrativo). */
-  currentStateKey?: string;
-  /** Imagen principal en assets/images/projects/<slug>.png. */
-  cover?: string;
-  links: ProjectLink[];
-  /** Si es co-autoría — clave i18n para describir el acuerdo. */
-  coAuthorKey?: string;
-}
+import { Project } from '../types/project.types';
 
 export const PROJECTS: Project[] = [
   {

@@ -10,12 +10,21 @@ import {
   LucideAngularModule,
 } from 'lucide-angular';
 import { findProjectBySlug } from '../../data/projects.data';
+import { StatusBadgeComponent } from '../../shared/components/status-badge/status-badge';
+import { TechChipComponent } from '../../shared/components/tech-chip/tech-chip';
 import { RevealDirective } from '../../shared/directives/reveal.directive';
 
 @Component({
   selector: 'app-project-detail',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [LucideAngularModule, RouterLink, TranslatePipe, RevealDirective],
+  imports: [
+    LucideAngularModule,
+    RouterLink,
+    TranslatePipe,
+    RevealDirective,
+    StatusBadgeComponent,
+    TechChipComponent,
+  ],
   templateUrl: './project-detail.html',
   styleUrl: './project-detail.scss',
 })
@@ -33,12 +42,4 @@ export class ProjectDetailComponent {
     const slug = this.slug().get('slug') ?? '';
     return findProjectBySlug(slug);
   });
-
-  protected statusKey(): string {
-    const p = this.project();
-    if (!p) return '';
-    return p.status === 'in-progress'
-      ? 'projects.status.inProgress'
-      : 'projects.status.completed';
-  }
 }

@@ -1,0 +1,16 @@
+@use '../../../../styles/tokens' as t;
+@use '../../../../styles/mixins' as m;
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: t.$space-2;
+
+  &__burger {
+    display: inline-flex;
+
+    @include m.lg {
+      display: none;
+    }
+  }
+}

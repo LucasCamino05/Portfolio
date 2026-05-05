@@ -7,40 +7,14 @@
       <span class="header__brand-name">Lucas Camino</span>
     </a>
 
-    <nav class="header__nav" [class.is-open]="mobileOpen()" aria-label="Main">
-      <ul class="header__list">
-        @for (link of links; track link.fragment) {
-          <li>
-            <a
-              class="header__link"
-              routerLink="/"
-              [fragment]="link.fragment"
-              (click)="closeMobile()"
-            >
-              {{ link.labelKey | translate }}
-            </a>
-          </li>
-        }
-      </ul>
-    </nav>
+    <app-header-nav
+      [open]="mobileOpen()"
+      (linkClicked)="closeMobile()"
+    />
 
-    <div class="header__controls">
-      <app-language-switcher />
-      <app-theme-toggle />
-
-      <button
-        type="button"
-        class="header__burger"
-        [attr.aria-expanded]="mobileOpen()"
-        [attr.aria-label]="(mobileOpen() ? 'header.closeMenu' : 'header.openMenu') | translate"
-        (click)="toggleMobile()"
-      >
-        @if (mobileOpen()) {
-          <lucide-icon [img]="XIcon" [size]="20" />
-        } @else {
-          <lucide-icon [img]="MenuIcon" [size]="20" />
-        }
-      </button>
-    </div>
+    <app-header-controls
+      [mobileOpen]="mobileOpen()"
+      (burgerClicked)="toggleMobile()"
+    />
   </div>
 </header>

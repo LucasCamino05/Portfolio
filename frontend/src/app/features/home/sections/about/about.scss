@@ -1,26 +1,17 @@
 @use '../../../../../styles/tokens' as t;
-@use '../../../../../styles/mixins' as m;
 
-.about {
-  @include m.section;
+.about-body {
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-5;
+  max-width: 70ch;
 
-  &__inner {
-    @include m.container;
-  }
+  p {
+    margin: 0;
+    color: var(--color-text);
+    font-size: t.$text-lg;
+    line-height: t.$leading-relaxed;
 
-  &__body {
-    display: flex;
-    flex-direction: column;
-    gap: t.$space-5;
-    max-width: 70ch;
-
-    p {
-      margin: 0;
-      color: var(--color-text);
-      font-size: t.$text-lg;
-      line-height: t.$leading-relaxed;
-
-      strong { color: var(--color-accent); }
-    }
+    strong { color: var(--color-accent); }
   }
 }

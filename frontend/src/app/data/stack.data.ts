@@ -1,22 +1,4 @@
-export interface StackItem {
-  name: string;
-  /** Nombre del logo o ícono. Por ahora usamos solo texto, los logos
-   *  los sumamos en una segunda iteración (devicon o simpleicons). */
-  icon?: string;
-}
-
-export interface StackCategory {
-  /** Clave i18n: `stack.categories.<key>`. */
-  key:
-    | 'backend'
-    | 'frontend'
-    | 'mobile'
-    | 'databases'
-    | 'tools'
-    | 'languages'
-    | 'architecture';
-  items: StackItem[];
-}
+import { StackCategory } from '../types/stack.types';
 
 export const STACK: StackCategory[] = [
   {
