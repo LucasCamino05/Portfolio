@@ -1,14 +1,27 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { TranslatePipe } from '@ngx-translate/core';
 import { STACK } from '../../../../data/stack.data';
-import { RevealDirective } from '../../../../shared/directives/reveal.directive';
-import { SectionTitleComponent } from '../../../../shared/components/section-title/section-title';
+import { SectionComponent } from '../../../../shared/components/section/section';
+import { StackCategoryComponent } from './stack-category/stack-category';
 
 @Component({
   selector: 'app-stack',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [TranslatePipe, RevealDirective, SectionTitleComponent],
-  templateUrl: './stack.html',
+  imports: [SectionComponent, StackCategoryComponent],
+  template: `
+    <app-section
+      id="stack"
+      titleKey="stack.title"
+      subtitleKey="stack.subtitle"
+      eyebrow="03"
+      variant="surface"
+    >
+      <div class="stack-grid">
+        @for (cat of stack; track cat.key) {
+          <app-stack-category [category]="cat" />
+        }
+      </div>
+    </app-section>
+  `,
   styleUrl: './stack.scss',
 })
 export class StackComponent {

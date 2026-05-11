@@ -4,53 +4,11 @@
 .hero {
   position: relative;
   overflow: hidden;
-  min-height: calc(100vh - 4rem); // viewport menos header
+  min-height: calc(100vh - 4rem);
   display: flex;
   align-items: center;
   isolation: isolate;
 
-  // ---------- Decoración (grid + aurora) ----------
-  &__decoration {
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
-  }
-
-  &__grid {
-    position: absolute;
-    inset: 0;
-    background-image:
-      radial-gradient(circle, var(--grid-color) 1px, transparent 1px);
-    background-size: 28px 28px;
-    mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 30%, transparent 80%);
-    -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 30%, transparent 80%);
-  }
-
-  &__aurora {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(120px);
-    opacity: 1;
-
-    &--1 {
-      width: clamp(20rem, 45vw, 36rem);
-      height: clamp(20rem, 45vw, 36rem);
-      background: var(--aurora-1);
-      top: -8rem;
-      right: -10rem;
-    }
-
-    &--2 {
-      width: clamp(16rem, 35vw, 28rem);
-      height: clamp(16rem, 35vw, 28rem);
-      background: var(--aurora-2);
-      bottom: -6rem;
-      left: -6rem;
-    }
-  }
-
-  // ---------- Contenido ----------
   &__inner {
     @include m.container;
     display: grid;
@@ -133,7 +91,6 @@
     }
   }
 
-  // ---------- Foto / placeholder ----------
   &__photo {
     position: relative;
     justify-self: center;

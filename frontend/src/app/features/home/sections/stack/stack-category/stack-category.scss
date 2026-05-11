@@ -1,0 +1,22 @@
+@use '../../../../../../styles/tokens' as t;
+
+.stack-category {
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-3;
+
+  &__name {
+    font-family: t.$font-mono;
+    font-size: t.$text-xs;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-accent);
+    margin: 0;
+  }
+
+  &__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: t.$space-2;
+  }
+}

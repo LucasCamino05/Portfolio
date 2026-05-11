@@ -1,13 +1,4 @@
-export interface ExperienceEntry {
-  /** Clave única para mapear traducciones (experienceData.<key>...) */
-  key: string;
-  /** Lucide icon name */
-  icon: string;
-  /** Período tal como se muestra. No se traduce (fechas son universales). */
-  period: string;
-  /** Si está activo (badge "Presente"). */
-  present?: boolean;
-}
+import { ComplementaryCourseGroup, ExperienceEntry } from '../types/experience.types';
 
 export const EXPERIENCE: ExperienceEntry[] = [
   {
@@ -29,12 +20,6 @@ export const EXPERIENCE: ExperienceEntry[] = [
     present: true,
   },
 ];
-
-export interface ComplementaryCourseGroup {
-  provider: string;
-  /** Lista plana de cursos. Las fechas se omiten en el portfolio. */
-  courses: string[];
-}
 
 export const COMPLEMENTARY: ComplementaryCourseGroup[] = [
   {

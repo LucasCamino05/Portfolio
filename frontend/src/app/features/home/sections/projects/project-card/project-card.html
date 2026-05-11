@@ -1,0 +1,39 @@
+<article class="project-card">
+  <div class="project-card__cover">
+    <span class="project-card__cover-mark">{{ project().slug.toUpperCase() }}</span>
+    <app-status-badge [status]="project().status" variant="on-cover" />
+  </div>
+
+  <div class="project-card__body">
+    <h3 class="project-card__name">{{ project().titleKey | translate }}</h3>
+    <p class="project-card__tagline">{{ project().taglineKey | translate }}</p>
+
+    <ul class="project-card__chips">
+      @for (tech of visibleChips(); track tech) {
+        <li><app-tech-chip [label]="tech" variant="solid" /></li>
+      }
+      @if (extraChipsCount() > 0) {
+        <li class="project-card__chip-more">+{{ extraChipsCount() }}</li>
+      }
+    </ul>
+
+    <div class="project-card__actions">
+      <a class="project-card__cta" [routerLink]="['/proyectos', project().slug]">
+        {{ 'projects.viewMore' | translate }}
+        <lucide-icon [img]="ArrowUpRightIcon" [size]="16" />
+      </a>
+
+      @for (link of externalLinks(); track link.url) {
+        <a
+          class="project-card__link"
+          [href]="link.url"
+          target="_blank"
+          rel="noopener"
+        >
+          <lucide-icon [img]="GithubIcon" [size]="14" />
+          {{ link.labelKey | translate }}
+        </a>
+      }
+    </div>
+  </div>
+</article>

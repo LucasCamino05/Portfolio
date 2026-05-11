@@ -1,7 +1,7 @@
 @use '../../../../styles/tokens' as t;
 @use '../../../../styles/mixins' as m;
 
-.theme-toggle {
+.icon-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -16,6 +16,9 @@
   &:hover {
     border-color: var(--color-accent);
     color: var(--color-accent);
+  }
+
+  &--rotate-on-hover:hover {
     transform: rotate(15deg);
   }
 

@@ -1,21 +1,13 @@
 @use '../../../../../styles/tokens' as t;
 @use '../../../../../styles/mixins' as m;
 
-.contact {
-  @include m.section;
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: t.$space-10;
 
-  &__inner {
-    @include m.container;
-  }
-
-  &__layout {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: t.$space-10;
-
-    @include m.lg {
-      grid-template-columns: 1fr 1.2fr;
-      gap: t.$space-12;
-    }
+  @include m.lg {
+    grid-template-columns: 1fr 1.2fr;
+    gap: t.$space-12;
   }
 }
